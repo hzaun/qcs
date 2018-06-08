@@ -1,0 +1,27 @@
+<resources>
+    <string name="app_name">SPApp</string>
+
+    <string name="activity_login">Login</string>
+
+    <!--Login-->
+    <string name="placeholder_register"><u>Register here!</u></string>
+    <string name="info_invalid_password">Invalid password</string>
+
+    <!--Register-->
+    <string name="info_phone_no_length">Phone no must have 10 digits</string>
+    <string name="info_invalid_phone_no">Please enter a valid phone no</string>
+    <string name="info_invalid_email">Please enter a valid email id</string>
+    <string name="info_password_length">Password must have atleast 8 characters</string>
+    <string name="info_password_char">Password must have atleast 1 uppercase, 1 lowercase and 1 number</string>
+    <string name="register_success">Registered successfully!</string>
+
+    <!--Toast messages-->
+    <string name="info_no_internet">No internet available</string>
+    <string name="title_activity_starting_point">StartingPoint</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="nav_header_title">Android Studio</string>
+    <string name="nav_header_subtitle">android.studio@android.com</string>
+    <string name="nav_header_desc">Navigation header</string>
+    <string name="action_settings">Settings</string>
+</resources>

@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/clNavHeader"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="bottom"
+    android:orientation="vertical"
+    android:theme="@style/ThemeOverlay.AppCompat.Dark">
+
+    <ImageView
+        android:id="@+id/ivUserDisplay"
+        android:layout_width="0dp"
+        android:layout_height="@dimen/nav_header_height"
+        android:background="@drawable/side_nav_bar"
+        android:contentDescription="@string/nav_header_desc"
+        android:paddingTop="@dimen/nav_header_vertical_spacing"
+        android:scaleType="centerCrop"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tvEmailId"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/material_margin_medium"
+        android:layout_marginEnd="@dimen/material_margin_medium"
+        android:layout_marginStart="@dimen/material_margin_medium"
+        android:text="@string/nav_header_subtitle"
+        app:layout_constraintBottom_toBottomOf="@id/ivUserDisplay"
+        app:layout_constraintLeft_toLeftOf="parent" />
+
+    <TextView
+        android:id="@+id/tvUserName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/material_margin_xs"
+        android:paddingTop="@dimen/nav_header_vertical_spacing"
+        android:text="User 1"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@id/tvEmailId"
+        app:layout_constraintLeft_toLeftOf="@id/tvEmailId" />
+
+    <ImageView
+        android:id="@+id/ivSettings"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/material_margin_medium"
+        android:layout_marginTop="@dimen/material_margin_medium"
+        android:padding="@dimen/material_margin_small"
+        android:tint="@color/colorPrimary"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/ivUserDisplay"
+        app:srcCompat="@drawable/ic_settings" />
+
+    <TextView
+        android:id="@+id/tvSettings"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/material_margin_small"
+        android:text="Settings"
+        android:textColor="@color/colorPrimary"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@id/ivSettings"
+        app:layout_constraintLeft_toRightOf="@id/ivSettings"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="@id/ivSettings" />
+</android.support.constraint.ConstraintLayout>

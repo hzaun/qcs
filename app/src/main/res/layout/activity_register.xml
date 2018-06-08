@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/coordLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorPrimaryDark"
+    tools:context=".views.RegisterActivity">
+
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <AutoCompleteTextView
+            android:id="@+id/actvPhoneNo"
+            style="@style/hzView.Material"
+            android:layout_width="@dimen/material_view_width"
+            android:layout_marginBottom="@dimen/material_margin_medium"
+            android:layout_marginEnd="@dimen/material_margin_large"
+            android:layout_marginStart="@dimen/material_margin_large"
+            android:backgroundTint="@color/colorPrimaryLight"
+            android:drawablePadding="@dimen/material_margin_small"
+            android:drawableStart="@drawable/ic_phone"
+            android:drawableTint="@color/colorPrimaryLight"
+            android:hint="Phone No"
+            android:imeOptions="actionNext"
+            android:inputType="number"
+            android:maxLines="1"
+            android:textColor="@color/white"
+            android:textColorHint="@color/colorPrimaryLight"
+            app:layout_constraintBottom_toTopOf="@id/actvEmailId"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_chainStyle="packed" />
+
+        <AutoCompleteTextView
+            android:id="@+id/actvEmailId"
+            style="@style/hzView.Material"
+            android:layout_width="@dimen/material_view_width"
+            android:layout_marginBottom="@dimen/material_margin_medium"
+            android:layout_marginEnd="@dimen/material_margin_large"
+            android:layout_marginStart="@dimen/material_margin_large"
+            android:backgroundTint="@color/colorPrimaryLight"
+            android:drawablePadding="@dimen/material_margin_small"
+            android:drawableStart="@drawable/ic_email"
+            android:drawableTint="@color/colorPrimaryLight"
+            android:hint="Email Id"
+            android:imeOptions="actionNext"
+            android:inputType="textEmailAddress"
+            android:maxLines="1"
+            android:textColor="@color/white"
+            android:textColorHint="@color/colorPrimaryLight"
+            app:layout_constraintBottom_toTopOf="@id/actvPassword"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/actvPhoneNo"
+            app:layout_constraintVertical_chainStyle="packed" />
+
+        <AutoCompleteTextView
+            android:id="@+id/actvPassword"
+            style="@style/hzView.Material"
+            android:layout_width="@dimen/material_view_width"
+            android:layout_marginBottom="@dimen/material_margin_medium"
+            android:backgroundTint="@color/colorPrimaryLight"
+            android:drawablePadding="@dimen/material_margin_small"
+            android:drawableStart="@drawable/ic_lock"
+            android:drawableTint="@color/colorPrimaryLight"
+            android:hint="Password"
+            android:imeOptions="actionDone"
+            android:inputType="textPassword"
+            android:maxLines="1"
+            android:textColor="@color/white"
+            android:textColorHint="@color/colorPrimaryLight"
+            app:layout_constraintBottom_toTopOf="@id/bRegister"
+            app:layout_constraintLeft_toLeftOf="@id/actvPhoneNo"
+            app:layout_constraintRight_toRightOf="@id/actvPhoneNo"
+            app:layout_constraintTop_toBottomOf="@id/actvEmailId" />
+
+        <Button
+            android:id="@+id/bRegister"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/material_margin_medium"
+            android:backgroundTint="@color/colorAccent"
+            android:text="Register"
+            android:textColor="@color/white"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="@id/actvPhoneNo"
+            app:layout_constraintRight_toRightOf="@id/actvPhoneNo"
+            app:layout_constraintTop_toBottomOf="@id/actvPassword" />
+    </android.support.constraint.ConstraintLayout>
+</android.support.design.widget.CoordinatorLayout>

@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorPrimaryDark"
+    tools:context=".views.LoginActivity">
+
+    <AutoCompleteTextView
+        android:id="@+id/actvUsername"
+        style="@style/hzView.Material"
+        android:layout_width="@dimen/material_view_width"
+        android:layout_marginBottom="@dimen/material_margin_medium"
+        android:layout_marginEnd="@dimen/material_margin_large"
+        android:layout_marginStart="@dimen/material_margin_large"
+        android:backgroundTint="@color/colorPrimaryLight"
+        android:drawablePadding="@dimen/material_margin_small"
+        android:drawableStart="@drawable/ic_account"
+        android:drawableTint="@color/colorPrimaryLight"
+        android:hint="Username"
+        android:imeOptions="actionNext"
+        android:inputType="textEmailAddress"
+        android:maxLines="1"
+        android:textColor="@color/white"
+        android:textColorHint="@color/colorPrimaryLight"
+        app:layout_constraintBottom_toTopOf="@id/actvPassword"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_chainStyle="packed" />
+
+    <AutoCompleteTextView
+        android:id="@+id/actvPassword"
+        style="@style/hzView.Material"
+        android:layout_width="@dimen/material_view_width"
+        android:layout_marginBottom="@dimen/material_margin_medium"
+        android:backgroundTint="@color/colorPrimaryLight"
+        android:drawablePadding="@dimen/material_margin_small"
+        android:drawableStart="@drawable/ic_lock"
+        android:drawableTint="@color/colorPrimaryLight"
+        android:hint="Password"
+        android:imeOptions="actionDone"
+        android:inputType="textPassword"
+        android:maxLines="1"
+        android:textColor="@color/white"
+        android:textColorHint="@color/colorPrimaryLight"
+        app:layout_constraintBottom_toTopOf="@id/bLogin"
+        app:layout_constraintLeft_toLeftOf="@id/actvUsername"
+        app:layout_constraintRight_toRightOf="@id/actvUsername"
+        app:layout_constraintTop_toBottomOf="@id/actvUsername" />
+
+    <Button
+        android:id="@+id/bLogin"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/material_margin_medium"
+        android:backgroundTint="@color/colorAccent"
+        android:text="Login"
+        android:textColor="@color/white"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="@id/actvUsername"
+        app:layout_constraintRight_toRightOf="@id/actvUsername"
+        app:layout_constraintTop_toBottomOf="@id/actvPassword" />
+
+    <TextView
+        android:id="@+id/tvRegister"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:textStyle="bold"
+        android:padding="@dimen/material_margin_medium"
+        android:text="@string/placeholder_register"
+        android:textColor="@color/white"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent" />
+</android.support.constraint.ConstraintLayout>
