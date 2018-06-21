@@ -22,6 +22,7 @@ public class ImageUtils {
     public void loadImage(String sUrl, ImageView imageView){
         Glide.with(context)
                 .load(sUrl)
+                .thumbnail(0.1f)
                 .apply(new RequestOptions()
                         .placeholder(R.drawable.progress_animation)
                         .centerCrop())

@@ -18,6 +18,8 @@ import android.widget.TextView;
 
 import com.nuzharukiya.spapp.R;
 
+import java.lang.reflect.Method;
+
 import butterknife.BindView;
 
 /**
@@ -262,6 +264,29 @@ public class UIComponents {
     }
 
     /**
+     * Calls method on click of the right-side icon
+     *
+     * @param method
+     */
+    public void onClickEndIcon(final Method method) {
+        showIcon(ivEndIcon, true);
+        ivEndIcon.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                try {
+                    method.invoke(context);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+        });
+    }
+
+    public void setIvEndIcon(int resId) {
+        ivEndIcon.setImageResource(resId);
+    }
+
+    /**
      * Sets the icon with the given resource
      *
      * @param ivIcon
@@ -366,11 +391,11 @@ public class UIComponents {
         ((Activity) context).getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_HIDDEN);
     }
 
-    public void initDrawerToggle(final DrawerLayout drawer){
+    public void initDrawerToggle(final DrawerLayout drawer) {
         ivStartIcon.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(drawer.isDrawerOpen(GravityCompat.START)){
+                if (drawer.isDrawerOpen(GravityCompat.START)) {
                     drawer.closeDrawer(GravityCompat.START);
                 } else {
                     drawer.openDrawer(GravityCompat.START);

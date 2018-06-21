@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="@dimen/material_margin_xs">
+
+    <TextView
+        android:id="@+id/tvNoServices"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:padding="@dimen/material_margin_small"
+        android:text="No services added"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <android.support.v7.widget.AppCompatImageView
+        android:id="@+id/acivAddService"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="@dimen/material_margin_small"
+        android:layout_marginStart="12dp"
+        android:tint="@color/colorAccent"
+        app:layout_constraintBottom_toBottomOf="@id/etServiceName"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toLeftOf="@id/etServiceName"
+        app:layout_constraintTop_toTopOf="@id/etServiceName"
+        app:srcCompat="@drawable/ic_add_circle" />
+
+    <EditText
+        android:id="@+id/etServiceName"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/material_margin_small"
+        android:layout_marginEnd="@dimen/material_margin_small"
+        android:layout_marginTop="@dimen/material_margin_small"
+        android:background="@drawable/material_round_outline"
+        android:drawableEnd="@drawable/ic_action_cancel"
+        android:drawableTint="@color/grey"
+        android:gravity="center"
+        android:hint="Enter service name"
+        android:imeOptions="actionNext"
+        android:padding="@dimen/material_margin_small"
+        app:layout_constraintBottom_toTopOf="@id/rvServices"
+        app:layout_constraintLeft_toRightOf="@id/acivAddService"
+        app:layout_constraintRight_toLeftOf="@id/etServicePrice"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/etServicePrice"
+        android:layout_width="110dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="12dp"
+        android:background="@drawable/material_round_outline"
+        android:gravity="center"
+        android:hint="Enter price"
+        android:imeOptions="actionDone"
+        android:inputType="number"
+        android:padding="@dimen/material_margin_small"
+        app:layout_constraintLeft_toRightOf="@id/etServiceName"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="@id/etServiceName" />
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/rvServices"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/material_margin_small"
+        android:layout_marginLeft="@dimen/material_margin_xs"
+        android:layout_marginRight="@dimen/material_margin_xs"
+        android:layout_marginTop="@dimen/material_margin_small"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/etServiceName" />
+</android.support.constraint.ConstraintLayout>

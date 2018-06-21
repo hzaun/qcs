@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 
 import com.nuzharukiya.spapp.utils.BaseUtils;
 import com.nuzharukiya.spapp.utils.ImageUtils;
@@ -19,7 +20,7 @@ public class SPApp extends AppCompatActivity implements UIBase {
     private Context context;
 
     protected UIComponents uiComponents;
-    protected BaseUtils baseUtils;
+    public BaseUtils baseUtils;
     protected ImageUtils imageUtils;
 
     @Override
@@ -31,9 +32,14 @@ public class SPApp extends AppCompatActivity implements UIBase {
         initData();
         runFactory();
     }
-    
+
     protected void startNextActivity(Class<?> nextClass) {
+        startNextActivity(nextClass, true);
+    }
+
+    protected void startNextActivity(Class<?> nextClass, boolean bAnim) {
         startActivity(new Intent(context, nextClass));
+        if (bAnim) ((Activity) context).overridePendingTransition(R.anim.enter_from_right, R.anim.exit_to_left);
     }
 
     @Override

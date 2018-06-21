@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <TextView
+        android:id="@+id/tvDate"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:paddingBottom="@dimen/material_margin_small"
+        android:paddingEnd="@dimen/material_margin_medium"
+        android:paddingTop="@dimen/material_margin_small"
+        android:text="20th June, 2018"
+        android:visibility="gone"
+        app:layout_constraintLeft_toLeftOf="@id/cvTimeline"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/ivLine"
+        android:layout_width="1dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="@dimen/material_margin_large"
+        android:background="@color/grey"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <android.support.v7.widget.AppCompatImageView
+        android:id="@+id/acivInfo"
+        android:layout_width="@dimen/icon_size_small"
+        android:layout_height="@dimen/icon_size_small"
+        android:tint="@color/blue"
+        app:layout_constraintBottom_toBottomOf="@id/tvName"
+        app:layout_constraintLeft_toLeftOf="@id/ivLine"
+        app:layout_constraintRight_toRightOf="@id/ivLine"
+        app:layout_constraintTop_toTopOf="@id/tvName"
+        app:srcCompat="@drawable/ic_dot" />
+
+    <android.support.v7.widget.CardView
+        android:id="@+id/cvTimeline"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="@dimen/material_margin_xs"
+        android:layout_marginEnd="@dimen/material_margin_medium"
+        android:layout_marginStart="@dimen/material_margin_medium"
+        android:layout_marginTop="@dimen/material_margin_xs"
+        android:elevation="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toRightOf="@id/ivLine"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvDate" />
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/civImage"
+        android:layout_width="@dimen/icon_size_large"
+        android:layout_height="@dimen/icon_size_large"
+        android:layout_margin="@dimen/material_margin_medium"
+        android:elevation="2dp"
+        android:src="@color/teal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="@id/cvTimeline"
+        app:layout_constraintTop_toTopOf="@id/cvTimeline" />
+
+    <TextView
+        android:id="@+id/tvName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/material_margin_medium"
+        android:elevation="2dp"
+        android:text="Nuzha"
+        android:textColor="@color/blue"
+        android:textStyle="bold"
+        app:layout_constraintLeft_toRightOf="@id/civImage"
+        app:layout_constraintTop_toTopOf="@id/civImage" />
+
+    <TextView
+        android:id="@+id/tvAtLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:elevation="2dp"
+        android:text=" at "
+        app:layout_constraintLeft_toRightOf="@id/tvName"
+        app:layout_constraintTop_toTopOf="@id/civImage" />
+
+    <TextView
+        android:id="@+id/tvAppointmentTime"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:elevation="2dp"
+        android:text="3:00 pm"
+        android:textColor="@color/blue"
+        android:textStyle="bold"
+        app:layout_constraintLeft_toRightOf="@id/tvAtLabel"
+        app:layout_constraintTop_toTopOf="@id/civImage" />
+
+    <TextView
+        android:id="@+id/tvAppointmentType"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:elevation="2dp"
+        android:paddingBottom="@dimen/material_margin_medium"
+        android:text="Haircut"
+        app:layout_constraintLeft_toLeftOf="@id/tvName"
+        app:layout_constraintTop_toBottomOf="@id/tvName" />
+</android.support.constraint.ConstraintLayout>

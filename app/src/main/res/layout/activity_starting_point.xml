@@ -19,5 +19,18 @@
         android:layout_height="match_parent"
         android:layout_gravity="start"
         android:fitsSystemWindows="true"
-        app:headerLayout="@layout/nav_header_starting_point"/>
+        app:headerLayout="@layout/nav_header_starting_point">
+
+        <TextView
+            android:id="@+id/tvLogout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:background="@color/red"
+            android:gravity="center"
+            android:padding="@dimen/material_margin_medium"
+            android:text="LOGOUT"
+            android:textColor="@color/white"
+            android:textStyle="bold" />
+    </android.support.design.widget.NavigationView>
 </android.support.v4.widget.DrawerLayout>

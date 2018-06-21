@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/fabMon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/material_margin_small"
+        android:paddingBottom="@dimen/material_margin_small"
+        android:theme="@style/hzView.FloatingAccentButtonOverlay"
+        app:fabSize="mini"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toLeftOf="@+id/fabTue"
+        app:layout_constraintTop_toBottomOf="@id/tvWorkingDaysLabel" />
+
+    <TextView
+        android:id="@+id/tvMon"
+        style="@style/hzView.WorkingDayText"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:text="Mon"
+        app:layout_constraintBottom_toBottomOf="@id/fabMon"
+        app:layout_constraintLeft_toLeftOf="@id/fabMon"
+        app:layout_constraintRight_toRightOf="@id/fabMon"
+        app:layout_constraintTop_toTopOf="@id/fabMon" />
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/fabTue"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:theme="@style/hzView.FloatingAccentButtonOverlay"
+        app:fabSize="mini"
+        app:layout_constraintLeft_toRightOf="@id/fabMon"
+        app:layout_constraintRight_toLeftOf="@+id/fabWed"
+        app:layout_constraintTop_toBottomOf="@id/tvWorkingDaysLabel" />
+
+    <TextView
+        android:id="@+id/tvTue"
+        style="@style/hzView.WorkingDayText"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:focusable="false"
+        android:text="Tue"
+        app:layout_constraintBottom_toBottomOf="@id/fabTue"
+        app:layout_constraintLeft_toLeftOf="@id/fabTue"
+        app:layout_constraintRight_toRightOf="@id/fabTue"
+        app:layout_constraintTop_toTopOf="@id/fabTue" />
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/fabWed"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:theme="@style/hzView.FloatingAccentButtonOverlay"
+        app:fabSize="mini"
+        app:layout_constraintLeft_toRightOf="@id/fabTue"
+        app:layout_constraintRight_toLeftOf="@+id/fabThu"
+        app:layout_constraintTop_toBottomOf="@id/tvWorkingDaysLabel" />
+
+    <TextView
+        android:id="@+id/tvWed"
+        style="@style/hzView.WorkingDayText"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:text="Wed"
+        app:layout_constraintBottom_toBottomOf="@id/fabWed"
+        app:layout_constraintLeft_toLeftOf="@id/fabWed"
+        app:layout_constraintRight_toRightOf="@id/fabWed"
+        app:layout_constraintTop_toTopOf="@id/fabWed" />
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/fabThu"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:theme="@style/hzView.FloatingAccentButtonOverlay"
+        app:fabSize="mini"
+        app:layout_constraintLeft_toRightOf="@id/fabWed"
+        app:layout_constraintRight_toLeftOf="@+id/fabFri"
+        app:layout_constraintTop_toBottomOf="@id/tvWorkingDaysLabel" />
+
+    <TextView
+        android:id="@+id/tvThu"
+        style="@style/hzView.WorkingDayText"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:text="Thu"
+        app:layout_constraintBottom_toBottomOf="@id/fabThu"
+        app:layout_constraintLeft_toLeftOf="@id/fabThu"
+        app:layout_constraintRight_toRightOf="@id/fabThu"
+        app:layout_constraintTop_toTopOf="@id/fabThu" />
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/fabFri"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:theme="@style/hzView.FloatingAccentButtonOverlay"
+        app:fabSize="mini"
+        app:layout_constraintLeft_toRightOf="@id/fabThu"
+        app:layout_constraintRight_toLeftOf="@+id/fabSat"
+        app:layout_constraintTop_toBottomOf="@id/tvWorkingDaysLabel" />
+
+    <TextView
+        android:id="@+id/tvFri"
+        style="@style/hzView.WorkingDayText"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:text="Fri"
+        app:layout_constraintBottom_toBottomOf="@id/fabFri"
+        app:layout_constraintLeft_toLeftOf="@id/fabFri"
+        app:layout_constraintRight_toRightOf="@id/fabFri"
+        app:layout_constraintTop_toTopOf="@id/fabFri" />
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/fabSat"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:theme="@style/hzView.FloatingAccentButtonOverlay"
+        app:fabSize="mini"
+        app:layout_constraintLeft_toRightOf="@id/fabFri"
+        app:layout_constraintRight_toLeftOf="@+id/fabSun"
+        app:layout_constraintTop_toBottomOf="@id/tvWorkingDaysLabel" />
+
+    <TextView
+        android:id="@+id/tvSat"
+        style="@style/hzView.WorkingDayText"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:text="Sat"
+        app:layout_constraintBottom_toBottomOf="@id/fabSat"
+        app:layout_constraintLeft_toLeftOf="@id/fabSat"
+        app:layout_constraintRight_toRightOf="@id/fabSat"
+        app:layout_constraintTop_toTopOf="@id/fabSat" />
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/fabSun"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:theme="@style/hzView.FloatingAccentButtonOverlay"
+        app:fabSize="mini"
+        app:layout_constraintLeft_toRightOf="@id/fabSat"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvWorkingDaysLabel" />
+
+    <TextView
+        android:id="@+id/tvSun"
+        style="@style/hzView.WorkingDayText"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:text="Sun"
+        app:layout_constraintBottom_toBottomOf="@id/fabSun"
+        app:layout_constraintLeft_toLeftOf="@id/fabSun"
+        app:layout_constraintRight_toRightOf="@id/fabSun"
+        app:layout_constraintTop_toTopOf="@id/fabSun" />
+</android.support.constraint.ConstraintLayout>

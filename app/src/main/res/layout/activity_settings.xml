@@ -1,27 +1,180 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/grey"
     tools:context=".views.SettingsActivity">
 
     <android.support.constraint.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="wrap_content">
+
+        <include
+            android:id="@+id/toolbar"
+            layout="@layout/material_toolbar" />
+
+        <!--USER DETAILS-->
 
         <TextView
-            android:id="@+id/tvLogout"
+            android:id="@+id/tvUserDetails"
             android:layout_width="0dp"
-            android:text="LOGOUT"
-            android:textStyle="bold"
-            android:background="@color/red"
-            android:textColor="@color/white"
-            android:gravity="center"
-            app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_height="wrap_content"
             android:padding="@dimen/material_margin_medium"
+            android:text="User Details"
+            android:textAllCaps="true"
+            android:textColor="@color/darkGray"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
-            android:layout_height="wrap_content" />
+            app:layout_constraintTop_toBottomOf="@id/toolbar" />
+
+        <android.support.v7.widget.AppCompatImageView
+            android:id="@+id/acivUserDetails"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingRight="@dimen/material_margin_medium"
+            android:tint="@color/darkGray"
+            app:layout_constraintBottom_toBottomOf="@id/tvUserDetails"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="@id/tvUserDetails"
+            app:srcCompat="@drawable/ic_down" />
+
+        <android.support.v7.widget.CardView
+            android:id="@+id/cvUserDetails"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            app:layout_constraintBottom_toTopOf="@id/tvWorkingDaysLabel"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvUserDetails">
+
+            <include
+                android:id="@+id/clWorkingDays"
+                layout="@layout/layout_user_details"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+        </android.support.v7.widget.CardView>
+
+        <TextView
+            android:id="@+id/tvWorkingDaysLabel"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/material_margin_medium"
+            android:text="Working Days"
+            android:textAllCaps="true"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toLeftOf="@id/acivWorkingDays"
+            app:layout_constraintTop_toBottomOf="@id/cvUserDetails" />
+
+        <android.support.v7.widget.AppCompatImageView
+            android:id="@+id/acivWorkingDays"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingRight="@dimen/material_margin_medium"
+            android:tint="@color/darkGray"
+            app:layout_constraintBottom_toBottomOf="@id/tvWorkingDaysLabel"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="@id/tvWorkingDaysLabel"
+            app:srcCompat="@drawable/ic_down" />
+
+        <android.support.v7.widget.CardView
+            android:id="@+id/cvWorkingDays"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvWorkingDaysLabel">
+
+            <include
+                android:id="@+id/clWorkingDays"
+                layout="@layout/layout_working_days"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/material_margin_small"
+                android:layout_marginLeft="@dimen/material_margin_medium"
+                android:layout_marginRight="@dimen/material_margin_medium"
+                android:layout_marginTop="@dimen/material_margin_medium" />
+        </android.support.v7.widget.CardView>
+
+        <TextView
+            android:id="@+id/tvServices"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/material_margin_medium"
+            android:text="Services"
+            android:textAllCaps="true"
+            app:layout_constraintBottom_toTopOf="@id/cvServicesOffered"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/cvWorkingDays" />
+
+        <android.support.v7.widget.AppCompatImageView
+            android:id="@+id/acivServices"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingRight="@dimen/material_margin_medium"
+            android:tint="@color/darkGray"
+            app:layout_constraintBottom_toBottomOf="@id/tvServices"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="@id/tvServices"
+            app:srcCompat="@drawable/ic_down" />
+
+        <android.support.v7.widget.CardView
+            android:id="@+id/cvServicesOffered"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            app:layout_constraintBottom_toTopOf="@id/tvPhotos"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvServices">
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <include
+                    layout="@layout/layout_services_offered"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+            </FrameLayout>
+        </android.support.v7.widget.CardView>
+
+        <TextView
+            android:id="@+id/tvPhotos"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/material_margin_medium"
+            android:text="Photos"
+            android:textAllCaps="true"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/cvServicesOffered" />
+
+        <android.support.v7.widget.AppCompatImageView
+            android:id="@+id/acivPhotos"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingRight="@dimen/material_margin_medium"
+            android:tint="@color/darkGray"
+            app:layout_constraintBottom_toBottomOf="@id/tvPhotos"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="@id/tvPhotos"
+            app:srcCompat="@drawable/ic_down" />
+
+        <android.support.v7.widget.CardView
+            android:id="@+id/cvSalonPhotos"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvPhotos">
+
+            <include layout="@layout/layout_salon_photos" />
+        </android.support.v7.widget.CardView>
     </android.support.constraint.ConstraintLayout>
-</android.support.design.widget.CoordinatorLayout>
+</ScrollView>

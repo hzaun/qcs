@@ -7,6 +7,9 @@ import android.os.Bundle;
 import android.util.Log;
 import android.widget.Toast;
 
+import com.facebook.AccessToken;
+import com.google.android.gms.auth.api.signin.GoogleSignIn;
+import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.nuzharukiya.spapp.R;
 import com.nuzharukiya.spapp.SPApp;
 import com.nuzharukiya.spapp.utils.BaseUtils;
@@ -24,7 +27,16 @@ public class SplashActivity extends SPApp {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_splash_screen);
+
+        if (isUserLoggedIn()) {
+            // Registered user logged in
+            startNextActivity(StartingPoint.class);
+        } else {
+            startNextActivity(LoginActivity.class);
+        }
+
+        // Activity should not be available on back press
+        SplashActivity.this.finish();
     }
 
     @Override
@@ -34,38 +46,61 @@ public class SplashActivity extends SPApp {
         context = SplashActivity.this;
         SPAppPreferences.init(context);
 
-        uiComponents = new UIComponents(context, false);
-        uiComponents.makeStatusBarTransparent();
-        uiComponents.hideNavigationBarImmersive();
+//        uiComponents = new UIComponents(context, false);
+//        uiComponents.makeStatusBarTransparent();
+//        uiComponents.hideNavigationBarImmersive();
     }
 
-    @Override
-    public void runFactory() {
-        new IntentLauncher().start();
-    }
+    //
+//    @Override
+//    public void runFactory() {
+////        new IntentLauncher().start();
+//    }
+//
+//    private class IntentLauncher extends Thread {
+//
+//        /**
+//         * Sleep for some time and then start new activity.
+//         */
+//        @Override
+//        public void run() {
+//            try {
+//                // Sleeping
+//                Thread.sleep(SPLASH_TIME * 1000);
+//            } catch (Exception e) {
+//                Log.e("Exception", e.getMessage());
+//            }
+//
+//            if (isUserLoggedIn()) {
+//                // Registered user logged in
+//                startNextActivity(StartingPoint.class);
+//            } else {
+//                startNextActivity(LoginActivity.class);
+//            }
+//
+//            // Activity should not be available on back press
+//            SplashActivity.this.finish();
+//        }
+//    }
+//
+    private boolean isUserLoggedIn() {
 
-    private class IntentLauncher extends Thread {
-
-        /**
-         * Sleep for some time and then start new activity.
-         */
-        @Override
-        public void run() {
-            try {
-                // Sleeping
-                Thread.sleep(SPLASH_TIME * 1000);
-            } catch (Exception e) {
-                Log.e("Exception", e.getMessage());
-            }
-
-            if (SPAppPreferences.getUserLoggedIn()) {
-                startNextActivity(StartingPoint.class);
-            } else {
-                startNextActivity(LoginActivity.class);
-            }
-
-            // Activity should not be available on back press
-            SplashActivity.this.finish();
+        // Check for existing Google Sign In account, if the user is already signed in
+        // the GoogleSignInAccount will be non-null.
+        GoogleSignInAccount account = GoogleSignIn.getLastSignedInAccount(context);
+        if (account != null) {
+            // Gmail user logged in
+            return true;
         }
+
+        AccessToken accessToken = AccessToken.getCurrentAccessToken();
+        if (accessToken != null && !accessToken.isExpired()) {
+            // Facebook user logged in
+            return true;
+        }
+
+        if (SPAppPreferences.getUserLoggedIn()) return true;
+
+        return false;
     }
 }

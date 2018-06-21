@@ -43,7 +43,7 @@
         app:layout_constraintBottom_toTopOf="@id/tvEmailId"
         app:layout_constraintLeft_toLeftOf="@id/tvEmailId" />
 
-    <ImageView
+    <android.support.v7.widget.AppCompatImageView
         android:id="@+id/ivSettings"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -63,7 +63,6 @@
         android:text="Settings"
         android:textColor="@color/colorPrimary"
         android:textSize="18sp"
-        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="@id/ivSettings"
         app:layout_constraintLeft_toRightOf="@id/ivSettings"
         app:layout_constraintRight_toRightOf="parent"
