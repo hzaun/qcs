@@ -37,9 +37,11 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".views.LoginActivity"></activity>
+        <activity android:name=".views.LoginActivity" />
         <activity android:name=".SPApp" />
-        <activity android:name=".views.RegisterActivity" />
+        <activity
+            android:name=".views.RegisterActivity"
+            android:windowSoftInputMode="adjustResize" />
         <activity
             android:name=".views.StartingPoint"
             android:label="@string/title_activity_starting_point"

@@ -15,6 +15,7 @@ public class SPAppPreferences {
 
     private static final String USER_ID = "USER_ID";
     private static final String USER_EMAIL = "USER_EMAIL";
+    private static final String USER_SET_PASSWORD = "USER_SET_PASSWORD";
     private static final String USER_LOGGED_IN = "USER_LOGGED_IN";
     private static final String ACCESS_TOKEN = "ACCESS_TOKEN";
 
@@ -42,7 +43,7 @@ public class SPAppPreferences {
     public static void setUserEmail(String userEmail) {
         SharedPreferences.Editor _editor = _sharedPreferences.edit();
         _editor.putString(USER_EMAIL, userEmail);
-        _editor.commit();
+        _editor.apply();
         _editor = null;
     }
 
@@ -54,7 +55,7 @@ public class SPAppPreferences {
     public static void setUserId(String userId) {
         SharedPreferences.Editor _editor = _sharedPreferences.edit();
         _editor.putString(USER_ID, userId);
-        _editor.commit();
+        _editor.apply();
         _editor = null;
     }
 
@@ -66,7 +67,19 @@ public class SPAppPreferences {
     public static void setUserLoggedIn(boolean bUserLoggedIn) {
         SharedPreferences.Editor _editor = _sharedPreferences.edit();
         _editor.putBoolean(USER_LOGGED_IN, bUserLoggedIn);
-        _editor.commit();
+        _editor.apply();
+        _editor = null;
+    }
+
+    // User has registered, but has yet to set their password
+    public static boolean getUserSetPassword() {
+        return _sharedPreferences.getBoolean(USER_SET_PASSWORD, BOOLEAN_DEFAULT_VALUE);
+    }
+
+    public static void setUserSetPassword(boolean bUserHasSetPassword) {
+        SharedPreferences.Editor _editor = _sharedPreferences.edit();
+        _editor.putBoolean(USER_SET_PASSWORD, bUserHasSetPassword);
+        _editor.apply();
         _editor = null;
     }
 
@@ -78,7 +91,7 @@ public class SPAppPreferences {
     public static void setAccessToken(String accessToken) {
         SharedPreferences.Editor _editor = _sharedPreferences.edit();
         _editor.putString(ACCESS_TOKEN, accessToken);
-        _editor.commit();
+        _editor.apply();
         _editor = null;
     }
 
@@ -96,7 +109,7 @@ public class SPAppPreferences {
     public static void setDisplayName(String displayName) {
         SharedPreferences.Editor _editor = _sharedPreferences.edit();
         _editor.putString(DISPLAY_NAME, displayName);
-        _editor.commit();
+        _editor.apply();
         _editor = null;
     }
 
@@ -108,7 +121,7 @@ public class SPAppPreferences {
     public static void setFirstName(String firstName) {
         SharedPreferences.Editor _editor = _sharedPreferences.edit();
         _editor.putString(FIRST_NAME, firstName);
-        _editor.commit();
+        _editor.apply();
         _editor = null;
     }
 
@@ -120,7 +133,7 @@ public class SPAppPreferences {
     public static void setLastName(String lastName) {
         SharedPreferences.Editor _editor = _sharedPreferences.edit();
         _editor.putString(LAST_NAME, lastName);
-        _editor.commit();
+        _editor.apply();
         _editor = null;
     }
 
@@ -131,8 +144,8 @@ public class SPAppPreferences {
 
     public static void setImageUrl(Uri imageUri) {
         SharedPreferences.Editor _editor = _sharedPreferences.edit();
-        _editor.putString(IMAGE_URL, imageUri != null? imageUri.toString() : "");
-        _editor.commit();
+        _editor.putString(IMAGE_URL, imageUri != null ? imageUri.toString() : "");
+        _editor.apply();
         _editor = null;
     }
 }

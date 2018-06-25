@@ -5,7 +5,6 @@ import android.arch.lifecycle.LiveData;
 import android.arch.lifecycle.Observer;
 import android.content.Context;
 import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.constraint.ConstraintLayout;
@@ -27,7 +26,6 @@ import com.nuzharukiya.spapp.SPApp;
 import com.nuzharukiya.spapp.adapters.AppointmentsAdapter;
 import com.nuzharukiya.spapp.room.ServiceProviderDatabase;
 import com.nuzharukiya.spapp.room.entities.AppointmentInfoEntity;
-import com.nuzharukiya.spapp.room.entities.ServiceInfoEntity;
 import com.nuzharukiya.spapp.utils.SPAppPreferences;
 import com.nuzharukiya.spapp.utils.UIComponents;
 
@@ -76,11 +74,10 @@ public class StartingPoint extends SPApp implements
         uiComponents = new UIComponents(context, true);
         uiComponents.setToolbarItems(R.drawable.ic_menu, R.string.app_name);
 
-        Bundle bundle = getIntent().getExtras();
-        if (bundle != null) {
-            if (bundle.getBoolean("SHOW_DIALOG")) {
-                showSetPasswordDialog();
-            }
+        SPAppPreferences.setUserLoggedIn(true);
+
+        if (!SPAppPreferences.getUserSetPassword()) {
+            showSetPasswordDialog();
         }
     }
 
@@ -98,18 +95,19 @@ public class StartingPoint extends SPApp implements
             public void onClick(View v) {
                 String sPassword = etPassword.getText().toString();
                 String sConfirmPassword = etConfirmPassword.getText().toString();
-                if (sPassword.length() > 8) {
+                if (sPassword.length() < 8) {
                     baseUtils.makeToast("Password must have atleast 8 characters!");
                 } else if (!sConfirmPassword.equals(sPassword)) {
                     baseUtils.makeToast("Passwords don't match!");
                 } else {
                     baseUtils.makeToast("Password set!");
+                    SPAppPreferences.setUserSetPassword(true);
                     dialog.dismiss();
                 }
             }
         });
 
-        dialog.getWindow().setLayout(WindowManager.LayoutParams.MATCH_PARENT,
+        Objects.requireNonNull(dialog.getWindow()).setLayout(WindowManager.LayoutParams.MATCH_PARENT,
                 WindowManager.LayoutParams.WRAP_CONTENT);
         dialog.setCancelable(false);
         dialog.show();

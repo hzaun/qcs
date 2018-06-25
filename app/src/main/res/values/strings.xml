@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">SPApp</string>
+    <string name="app_name">BMS - SP</string>
 
     <string name="facebook_app_id">143120143222402</string>
     <string name="fb_login_protocol_scheme">fb143120143222402</string>

@@ -15,18 +15,15 @@ import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.VolleyLog;
-import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.StringRequest;
 import com.nuzharukiya.spapp.R;
 import com.nuzharukiya.spapp.SPApp;
 import com.nuzharukiya.spapp.SPApplication;
 import com.nuzharukiya.spapp.helpers.RegisterHelper;
-import com.nuzharukiya.spapp.utils.Constants;
 import com.nuzharukiya.spapp.utils.SPAppPreferences;
 import com.nuzharukiya.spapp.utils.UIComponents;
 
 import org.json.JSONException;
-import org.json.JSONObject;
 
 import butterknife.BindView;
 import butterknife.OnClick;
@@ -47,8 +44,8 @@ public class RegisterActivity extends SPApp {
     AutoCompleteTextView actvPhoneNo;
     @BindView(R.id.actvEmailId)
     AutoCompleteTextView actvEmailId;
-    @BindView(R.id.actvPassword)
-    AutoCompleteTextView actvPassword;
+    @BindView(R.id.actvFullName)
+    AutoCompleteTextView actvFullName;
     @BindView(R.id.actvRegisterOtp)
     AutoCompleteTextView actvRegisterOtp;
     @BindView(R.id.bRegister)
@@ -78,7 +75,7 @@ public class RegisterActivity extends SPApp {
     public void initViews() {
         super.initViews();
 
-        actvPassword.setOnEditorActionListener(new TextView.OnEditorActionListener() {
+        actvFullName.setOnEditorActionListener(new TextView.OnEditorActionListener() {
             @Override
             public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
                 boolean handled = false;
@@ -104,9 +101,9 @@ public class RegisterActivity extends SPApp {
         } else {
             String sPhoneNo = actvPhoneNo.getText().toString().trim();
             String sEmailId = actvEmailId.getText().toString().trim();
-            String sPassword = actvPassword.getText().toString().trim();
+            String sFullName = actvFullName.getText().toString().trim();
 
-            int ERROR_CODE = registerHelper.getErrorCode(sPhoneNo, sEmailId, sPassword);
+            int ERROR_CODE = registerHelper.getErrorCode(sPhoneNo, sEmailId, sFullName);
             if (ERROR_CODE > 0) {
                 baseUtils.showSnackbar(coordLayout, ERROR_CODE);
             } else {
@@ -158,9 +155,7 @@ public class RegisterActivity extends SPApp {
     }
 
     private void goToDashboard() {
-        Intent intent = new Intent(RegisterActivity.this, StartingPoint.class);
-        intent.putExtra("SHOW_DIALOG", true);
-        startActivity(intent);
+        startNextActivity(StartingPoint.class);
     }
 
     private void goToLoginA() {
@@ -219,7 +214,7 @@ public class RegisterActivity extends SPApp {
     private void changeToOTPView() {
         actvPhoneNo.setVisibility(View.INVISIBLE);
         actvEmailId.setVisibility(View.INVISIBLE);
-        actvPassword.setVisibility(View.INVISIBLE);
+        actvFullName.setVisibility(View.INVISIBLE);
 
         actvRegisterOtp.setVisibility(View.VISIBLE);
 

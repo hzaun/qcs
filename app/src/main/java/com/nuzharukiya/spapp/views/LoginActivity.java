@@ -223,6 +223,8 @@ public class LoginActivity extends SPApp implements
 
     private void enterApp() {
         // Enter app
+        SPAppPreferences.setUserSetPassword(true);
         startNextActivity(StartingPoint.class);
+        LoginActivity.this.finish();
     }
 }

@@ -19,11 +19,12 @@ public class RegisterHelper {
             return R.string.info_invalid_phone_no;
         } else if (!isValidEmail(sEmailId)) {
             return R.string.info_invalid_email;
-        } else if (sPassword.length() < 8) {
-            return R.string.info_password_length;
-        } else if (!isValidPassword(sPassword)) {
-            return R.string.info_password_char;
         }
+//        else if (sPassword.length() < 8) {
+//            return R.string.info_password_length;
+//        } else if (!isValidPassword(sPassword)) {
+//            return R.string.info_password_char;
+//        }
         return -1;
     }
 

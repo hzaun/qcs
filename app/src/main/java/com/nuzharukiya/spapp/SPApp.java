@@ -3,10 +3,8 @@ package com.nuzharukiya.spapp;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
-import android.view.View;
+import android.support.v7.app.AppCompatActivity;
 
 import com.nuzharukiya.spapp.utils.BaseUtils;
 import com.nuzharukiya.spapp.utils.ImageUtils;
@@ -18,6 +16,7 @@ import butterknife.ButterKnife;
 public class SPApp extends AppCompatActivity implements UIBase {
 
     private Context context;
+
 
     protected UIComponents uiComponents;
     public BaseUtils baseUtils;
