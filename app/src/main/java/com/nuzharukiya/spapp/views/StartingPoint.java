@@ -1,43 +1,41 @@
 package com.nuzharukiya.spapp.views;
 
 import android.app.Dialog;
-import android.arch.lifecycle.LiveData;
-import android.arch.lifecycle.Observer;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.PorterDuff;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
 import android.support.constraint.ConstraintLayout;
 import android.support.design.widget.NavigationView;
+import android.support.design.widget.TabLayout;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.content.ContextCompat;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
-import android.support.v4.widget.SwipeRefreshLayout;
-import android.support.v7.widget.DefaultItemAnimator;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.EditText;
+import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.nuzharukiya.spapp.R;
 import com.nuzharukiya.spapp.SPApp;
-import com.nuzharukiya.spapp.adapters.AppointmentsAdapter;
 import com.nuzharukiya.spapp.room.ServiceProviderDatabase;
-import com.nuzharukiya.spapp.room.entities.AppointmentInfoEntity;
 import com.nuzharukiya.spapp.utils.SPAppPreferences;
 import com.nuzharukiya.spapp.utils.UIComponents;
+import com.nuzharukiya.spapp.views.frags.MoreSettingsFragment;
+import com.nuzharukiya.spapp.views.frags.NewTasksFragment;
+import com.nuzharukiya.spapp.views.frags.OngoingTasksFragment;
+import com.nuzharukiya.spapp.views.frags.ProfileFragment;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Objects;
 
 import butterknife.BindView;
 
 public class StartingPoint extends SPApp implements
-        View.OnClickListener,
-        SwipeRefreshLayout.OnRefreshListener {
+        View.OnClickListener {
 
     private Context context;
     private ServiceProviderDatabase spDatabase;
@@ -47,16 +45,27 @@ public class StartingPoint extends SPApp implements
     @BindView(R.id.nav_view)
     NavigationView navigationView;
 
-    // Timeline
-
-    private SwipeRefreshLayout srlTimeline;
-    private RecyclerView rvTimeline;
-    private AppointmentsAdapter appointmentsAdapter;
-    private List<AppointmentInfoEntity> appointmentsList = new ArrayList<>();
-
     private ConstraintLayout clNavHeader;
     private ImageView ivUserDisplay;
     private TextView tvUserName, tvEmailId;
+
+    // Menu - Tabs
+
+    private static int TAB_ICON_COLOR_SELECTED;
+    private static int TAB_ICON_COLOR_UNSELECTED;
+
+    @BindView(R.id.tlMenu)
+    TabLayout tlMenu;
+
+    @BindView(R.id.flContainer)
+    FrameLayout flContainer;
+
+    Fragment fragment5 = new MoreSettingsFragment();
+    Fragment fragment4 = new ProfileFragment();
+    Fragment fragment3 = new MoreSettingsFragment();
+    Fragment fragment2 = new OngoingTasksFragment();
+    Fragment fragment1 = new NewTasksFragment();
+    Fragment active = fragment1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -73,6 +82,9 @@ public class StartingPoint extends SPApp implements
 
         uiComponents = new UIComponents(context, true);
         uiComponents.setToolbarItems(R.drawable.ic_menu, R.string.app_name);
+
+        TAB_ICON_COLOR_SELECTED = ContextCompat.getColor(context, R.color.colorAccent);
+        TAB_ICON_COLOR_UNSELECTED = ContextCompat.getColor(context, R.color.darkGray);
 
         SPAppPreferences.setUserLoggedIn(true);
 
@@ -121,22 +133,69 @@ public class StartingPoint extends SPApp implements
         ivUserDisplay = clNavHeader.findViewById(R.id.ivUserDisplay);
         tvUserName = clNavHeader.findViewById(R.id.tvUserName);
         tvEmailId = clNavHeader.findViewById(R.id.tvEmailId);
-        rvTimeline = findViewById(R.id.rvTimeline);
-        srlTimeline = findViewById(R.id.srlTimeline);
 
         uiComponents.initDrawerToggle(drawer);
-        srlTimeline.setOnRefreshListener(this);
 
         initNavigation();
-        initTimeline();
+        initTabs();
     }
 
-    private void initTimeline() {
-        appointmentsAdapter = new AppointmentsAdapter(context, appointmentsList);
-        LinearLayoutManager layoutManager = new LinearLayoutManager(context);
-        rvTimeline.setLayoutManager(layoutManager);
-        rvTimeline.setItemAnimator(new DefaultItemAnimator());
-        rvTimeline.setAdapter(appointmentsAdapter);
+    private void initTabs() {
+        final FragmentManager fm = getSupportFragmentManager();
+
+        fm.beginTransaction().add(R.id.flContainer, fragment5, "5").commit();
+        fm.beginTransaction().add(R.id.flContainer, fragment4, "4").commit();
+        fm.beginTransaction().add(R.id.flContainer, fragment3, "3").commit();
+        fm.beginTransaction().add(R.id.flContainer, fragment2, "2").commit();
+        fm.beginTransaction().add(R.id.flContainer, fragment1, "1").commit();
+
+
+        fm.beginTransaction().hide(active).show(fragment1).commit();
+        fm.beginTransaction().hide(fragment2).commit();
+        fm.beginTransaction().hide(fragment3).commit();
+        fm.beginTransaction().hide(fragment4).commit();
+        fm.beginTransaction().hide(fragment5).commit();
+
+        Objects.requireNonNull(tlMenu.getTabAt(0).getIcon()).setColorFilter(TAB_ICON_COLOR_SELECTED, PorterDuff.Mode.SRC_IN);
+        active = fragment1;
+
+        tlMenu.setOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
+            @Override
+            public void onTabSelected(TabLayout.Tab tab) {
+
+                Objects.requireNonNull(tab.getIcon()).setColorFilter(TAB_ICON_COLOR_SELECTED, PorterDuff.Mode.SRC_IN);
+
+                if (tab.getPosition() == 0) {
+                    fm.beginTransaction().hide(active).show(fragment1).commit();
+                    active = fragment1;
+                }
+                if (tab.getPosition() == 1) {
+                    fm.beginTransaction().hide(active).show(fragment2).commit();
+                    active = fragment2;
+                }
+                if (tab.getPosition() == 2) {
+                    fm.beginTransaction().hide(active).show(fragment3).commit();
+                    active = fragment3;
+                }
+                if (tab.getPosition() == 3) {
+                    fm.beginTransaction().hide(active).show(fragment4).commit();
+                    active = fragment4;
+                }
+                if (tab.getPosition() == 4) {
+                    fm.beginTransaction().hide(active).show(fragment5).commit();
+                    active = fragment5;
+                }
+            }
+
+            @Override
+            public void onTabUnselected(TabLayout.Tab tab) {
+                Objects.requireNonNull(tab.getIcon()).setColorFilter(TAB_ICON_COLOR_UNSELECTED, PorterDuff.Mode.SRC_IN);
+            }
+
+            @Override
+            public void onTabReselected(TabLayout.Tab tab) {
+            }
+        });
     }
 
     @Override
@@ -146,141 +205,6 @@ public class StartingPoint extends SPApp implements
         imageUtils.loadImage(SPAppPreferences.getImageUrl().isEmpty() ? "https://i.imgur.com/80uMcZx.jpg" : SPAppPreferences.getImageUrl(), ivUserDisplay);
         tvUserName.setText(SPAppPreferences.getDisplayName());
         Objects.requireNonNull(tvEmailId).setText(SPAppPreferences.getUserEmail());
-
-        insertTimelineData();
-        fetchTimelineData();
-    }
-
-    private void fetchTimelineData() {
-        LiveData<List<AppointmentInfoEntity>> appointmentInfoLiveData = spDatabase.appointmentInfoDao().getAllAppointmentInfo();
-        appointmentInfoLiveData.observe(this, new Observer<List<AppointmentInfoEntity>>() {
-            @Override
-            public void onChanged(@Nullable List<AppointmentInfoEntity> appointmentInfoEntities) {
-                if (appointmentInfoEntities.size() > 0) {
-                    appointmentsList.clear();
-                    appointmentsList.addAll(appointmentInfoEntities);
-                    appointmentsAdapter.notifyDataSetChanged();
-                }
-            }
-        });
-    }
-
-    private void insertTimelineData() {
-
-        List<String> serviceTypes = new ArrayList<String>();
-        serviceTypes.add("1");
-        serviceTypes.add("3");
-        serviceTypes.add("5");
-        serviceTypes.add("8");
-        appointmentsList.add(new AppointmentInfoEntity(
-                "111",
-                "Nuzha Rukiya",
-                "180620",
-                "15:00",
-                serviceTypes
-        ));
-
-        appointmentsList.add(new AppointmentInfoEntity(
-                "121",
-                "Manogna Kamineni",
-                "180620",
-                "16:00",
-                new ArrayList<String>() {
-                    {
-                        add("1");
-                        add("4");
-                        add("7");
-                        add("8");
-                    }
-                }
-        ));
-
-        appointmentsList.add(new AppointmentInfoEntity(
-                "141",
-                "Manogna Kamineni",
-                "180620",
-                "19:00",
-                new ArrayList<String>() {
-                    {
-                        add("1");
-                        add("3");
-                        add("5");
-                    }
-                }
-        ));
-
-        appointmentsList.add(new AppointmentInfoEntity(
-                "151",
-                "Nuzha R",
-                "180620",
-                "19:30",
-                new ArrayList<String>() {
-                    {
-                        add("1");
-                        add("2");
-                        add("5");
-                    }
-                }
-        ));
-
-        appointmentsList.add(new AppointmentInfoEntity(
-                "161",
-                "Nuzha R",
-                "180620",
-                "20:30",
-                new ArrayList<String>() {
-                    {
-                        add("2");
-                        add("3");
-                        add("5");
-                    }
-                }
-        ));
-
-        appointmentsList.add(new AppointmentInfoEntity(
-                "171",
-                "Manogna Kamineni",
-                "180621",
-                "19:00",
-                new ArrayList<String>() {
-                    {
-                        add("1");
-                        add("3");
-                        add("5");
-                    }
-                }
-        ));
-
-        appointmentsList.add(new AppointmentInfoEntity(
-                "181",
-                "Nuzha R",
-                "180621",
-                "19:30",
-                serviceTypes
-        ));
-
-        appointmentsList.add(new AppointmentInfoEntity(
-                "191",
-                "Nuzha R",
-                "180621",
-                "20:30",
-                new ArrayList<String>() {
-                    {
-                        add("2");
-                        add("3");
-                        add("5");
-                    }
-                }
-        ));
-
-//        appointmentsAdapter.notifyDataSetChanged();
-
-        Thread t = new Thread() {
-            public void run() {
-                spDatabase.appointmentInfoDao().insertAppointmentData(appointmentsList);
-            }
-        };
-        t.start();
     }
 
     @Override
@@ -327,9 +251,7 @@ public class StartingPoint extends SPApp implements
         startActivity(iGoToLogin);
     }
 
-    @Override
-    public void onRefresh() {
-        insertTimelineData();
-        srlTimeline.setRefreshing(false);
+    public ServiceProviderDatabase getSpDatabase() {
+        return spDatabase;
     }
 }

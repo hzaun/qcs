@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginEnd="12dp"
+    android:layout_marginStart="12dp"
+    android:padding="@dimen/material_margin_xs">
+
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/tvCustomerName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/material_margin_medium"
+            android:text="User 123"
+            android:textSize="16dp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tvTime"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/material_margin_medium"
+            android:text="Recently"
+            app:layout_constraintBottom_toBottomOf="@id/tvCustomerName"
+            app:layout_constraintRight_toRightOf="parent" />
+
+        <TextView
+            android:id="@+id/tvServicesRequired"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/material_margin_small"
+            android:text="Hair Spa"
+            app:layout_constraintLeft_toLeftOf="@id/tvCustomerName"
+            app:layout_constraintTop_toBottomOf="@id/tvCustomerName" />
+
+        <TextView
+            android:id="@+id/tvPrice"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="50 credits"
+            app:layout_constraintBottom_toBottomOf="@id/tvServicesRequired"
+            app:layout_constraintRight_toRightOf="@id/tvTime" />
+
+        <ImageView
+            android:id="@+id/ivDiv"
+            android:layout_width="0dp"
+            android:layout_height="0.5dp"
+            android:layout_marginTop="@dimen/material_margin_small"
+            android:background="@color/gray"
+            app:layout_constraintLeft_toLeftOf="@id/tvCustomerName"
+            app:layout_constraintRight_toRightOf="@id/tvTime"
+            app:layout_constraintTop_toBottomOf="@id/tvServicesRequired" />
+
+        <TextView
+            android:id="@+id/tvAppointmentDate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/material_margin_medium"
+            android:layout_marginTop="@dimen/material_margin_small"
+            android:text="25 Jun, 2017"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="@id/tvCustomerName"
+            app:layout_constraintTop_toBottomOf="@id/ivDiv" />
+
+        <TextView
+            android:id="@+id/tvAppointmentDuration"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:gravity="end"
+            android:text="10:00 AM to 1:00 PM"
+            app:layout_constraintBottom_toBottomOf="@id/tvAppointmentDate"
+            app:layout_constraintLeft_toRightOf="@id/tvAppointmentDate"
+            app:layout_constraintRight_toRightOf="@id/tvTime" />
+    </android.support.constraint.ConstraintLayout>
+</android.support.v7.widget.CardView>

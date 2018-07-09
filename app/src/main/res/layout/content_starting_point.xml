@@ -9,17 +9,63 @@
     tools:context=".views.StartingPoint"
     tools:showIn="@layout/app_bar_starting_point">
 
-    <android.support.v4.widget.SwipeRefreshLayout
-        android:id="@+id/srlTimeline"
+    <FrameLayout
+        android:id="@+id/flContainer"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toTopOf="@id/tlMenu"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toTopOf="parent" />
 
-        <android.support.v7.widget.RecyclerView
-            android:id="@+id/rvTimeline"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
-    </android.support.v4.widget.SwipeRefreshLayout>
+    <android.support.design.widget.TabLayout
+        android:id="@+id/tlMenu"
+        android:layout_width="0dp"
+        android:layout_height="?attr/actionBarSize"
+        android:layout_alignParentBottom="true"
+        android:background="@color/white"
+        android:elevation="6dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:tabGravity="fill"
+        app:tabMode="fixed"
+        app:tabSelectedTextColor="@color/colorAccent"
+        app:tabTextAppearance="@style/MineCustomTabText">
+
+        <android.support.design.widget.TabItem
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@drawable/tab_selector"
+            android:icon="@drawable/ic_new_tasks"
+            android:text="Inbox"/>
+
+        <android.support.design.widget.TabItem
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@drawable/tab_selector"
+            android:icon="@drawable/ic_ongoing_tasks"
+            android:text="Ongoing" />
+
+        <android.support.design.widget.TabItem
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@drawable/tab_selector"
+            android:icon="@drawable/ic_completed_tasks"
+            android:text="Completed" />
+
+        <android.support.design.widget.TabItem
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@drawable/tab_selector"
+            android:icon="@drawable/ic_account"
+            android:text="Profile" />
+
+        <android.support.design.widget.TabItem
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@drawable/tab_selector"
+            android:icon="@drawable/ic_more"
+            android:text="More" />
+    </android.support.design.widget.TabLayout>
 </android.support.constraint.ConstraintLayout>

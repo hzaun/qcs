@@ -128,6 +128,7 @@ public class RegisterActivity extends SPApp {
                     @Override
                     public void onResponse(String response) {
                         baseUtils.makeToast("OTP validated successfully!");
+                        SPAppPreferences.setAccessToken("");
                         onOTPValidated();
                     }
                 },

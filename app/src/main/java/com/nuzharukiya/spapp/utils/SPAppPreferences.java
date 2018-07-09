@@ -148,4 +148,5 @@ public class SPAppPreferences {
         _editor.apply();
         _editor = null;
     }
+
 }

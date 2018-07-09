@@ -53,4 +53,9 @@
         <item name="android:textStyle">bold</item>
         <item name="android:textSize">14sp</item>
     </style>
+
+    <style name="MineCustomTabText" parent="TextAppearance.Design.Tab">
+        <item name="android:textSize">8sp</item>
+        <item name="android:textColor">@color/darkGray</item>
+    </style>
 </resources>
